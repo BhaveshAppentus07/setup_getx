@@ -26,11 +26,15 @@ class _AboutPageState extends State<AboutPage> {
         title: Text('Api Data Get',style: TextStyle(color: Colors.white),),
       ),
       body: Center(
-        child: FutureBuilder<ProductModel?>(
-          future: _pro.product(),
+        child: FutureBuilder<List<ProductModel>>(
+          future: _pro.products(),
           builder: (context,future) {
+            
             if(future.hasData){
-              return Padding(
+              return ListView.builder(
+                itemCount: future.data!.length,
+                itemBuilder: (context,index){
+                return Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
                   children: [
@@ -39,7 +43,7 @@ class _AboutPageState extends State<AboutPage> {
                       children: [
                         Text('Product Name:-'),
                         SizedBox(width: 5,),
-                        Text(future.data!.name.toString()),
+                        Text(future.data![index].name.toString()),
                       ],
                     ),
                     SizedBox(height: 5,),
@@ -47,7 +51,7 @@ class _AboutPageState extends State<AboutPage> {
                      children: [
                           Text('Product Brand:-'),
                         SizedBox(width: 5,),
-                        Text(future.data!.brand.toString()),
+                        Text(future.data![index].brand.toString()),
                      ],
                    ),
                     SizedBox(height: 5,),
@@ -55,7 +59,7 @@ class _AboutPageState extends State<AboutPage> {
                      children: [
                           Text('Product Price:-'),
                         SizedBox(width: 5,),
-                        Text('₹ ${future.data!.price.toString()}'),
+                        Text('₹ ${future.data![index].price.toString()}'),
                      ],
                    ),
                    SizedBox(height: 10,),
@@ -65,6 +69,7 @@ class _AboutPageState extends State<AboutPage> {
                 ),
               );
             
+              });
             }
             return CircularProgressIndicator();
           }
