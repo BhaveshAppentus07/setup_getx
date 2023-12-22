@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 
 class ThemeService {
   final _getStorage = GetStorage();
-  final storageKey = 'isLisghtMode';
+  final storageKey = 'isDarkMode';
 
   ThemeMode getThemeMode() {
     return isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
   }
-
 
   bool isSavedDarkMode() {
     return _getStorage.read(storageKey) ?? false;
@@ -20,7 +19,7 @@ class ThemeService {
   }
 
   void changeThemeMode() {
-    Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light);
-    // saveThemeMode(!isSavedDarkMode());
+    Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
+    saveThemeMode(!isSavedDarkMode());
   }
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_demo/app_them/theme_service.dart';
 import 'package:getx_demo/controller/home_page_controller.dart';
+import 'package:getx_demo/pages/about_page.dart';
 
 class HomePage extends StatefulWidget {
    HomePage({super.key});
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('Home Page',style: TextStyle(color: Colors.white),),
+        title: Text('hello'.tr,style: TextStyle(color: Colors.white),),
       ),
       body: Center(
         child: Column(
@@ -27,9 +28,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             ElevatedButton(onPressed: (){
 
-              Get.toNamed('/homePage');
+              Get.to(AboutPage());
 
-            }, child: Text('Open About Page')),
+            }, child: Text('getApiData'.tr)),
             SizedBox(height: 20,),
             InkWell(
             onTap: (){
