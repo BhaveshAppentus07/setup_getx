@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:getx_demo/Models/product_model.dart';
 import 'package:getx_demo/apis/api_urls.dart';
 
@@ -55,5 +56,24 @@ _dio.interceptors.add(
     }
     print(productModels.length);
     return productModels;
+  }
+}
+
+
+class BookingData extends StatelessWidget {
+  const BookingData({super.key});
+
+  /*
+    Without setState use stateless class
+    use getx state mangement
+    provider/ getx/ bloc
+    mostly avoide statfull wideget
+   */
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text('Booking Data')),
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/Auth/splash_screen.dart';
 import 'package:getx_demo/Binding/all_binding.dart';
 import 'package:getx_demo/language/en_us.dart';
 import 'package:getx_demo/pages/home_page.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     theme: ThemeData.light().copyWith(),
     darkTheme:ThemeData.dark().copyWith(),
       initialBinding: AllBinding(),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }

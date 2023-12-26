@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:getx_demo/app_them/theme_service.dart';
+import 'package:getx_demo/utils/app_them/theme_service.dart';
 import 'package:getx_demo/controller/home_page_controller.dart';
 import 'package:getx_demo/pages/about_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
    HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   // HomePageController _homeController = Get.put(HomePageController());
   @override
   Widget build(BuildContext context) {
