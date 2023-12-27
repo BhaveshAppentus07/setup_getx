@@ -5,6 +5,7 @@ import 'package:getx_demo/Auth/reset_password_otp.dart';
 import 'package:getx_demo/controller/empty_validation_controller.dart';
 import 'package:getx_demo/utils/app_them/app_colors.dart';
 import 'package:getx_demo/utils/style/style.dart';
+import 'package:getx_demo/utils/urls.dart';
 import 'package:getx_demo/widget/custom_button.dart';
 import 'package:getx_demo/widget/custom_text_field.dart';
 
@@ -21,7 +22,7 @@ class ForgotPassword extends StatelessWidget {
           Image(
               width: MediaQuery.sizeOf(context).width,
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/signup_background.png')),
+              image: AssetImage(ImageUrl.signup_background)),
           Padding(
             padding: const EdgeInsets.all(17.0),
             child: Column(

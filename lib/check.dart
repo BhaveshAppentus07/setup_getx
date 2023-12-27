@@ -1,136 +1,112 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: const Text('Pinput Example'),
-          centerTitle: true,
-          titleTextStyle: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-            color: Color.fromRGBO(30, 60, 87, 1),
-          ),
-        ),
-        body: const FractionallySizedBox(
-          widthFactor: 1,
-          child: PinputExample(),
-        ),
-      ),
-    ),
-  );
-}
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-/// This is the basic usage of Pinput
-/// For more examples check out the demo directory
-class PinputExample extends StatefulWidget {
-  const PinputExample({Key? key}) : super(key: key);
-
-  @override
-  State<PinputExample> createState() => _PinputExampleState();
-}
-
-class _PinputExampleState extends State<PinputExample> {
-  final pinController = TextEditingController();
-  final focusNode = FocusNode();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    pinController.dispose();
-    focusNode.dispose();
-    super.dispose();
-  }
+  static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
-    const focusedBorderColor = Color.fromRGBO(23, 171, 144, 1);
-    const fillColor = Color.fromRGBO(243, 246, 249, 0);
-    const borderColor = Color.fromRGBO(23, 171, 144, 0.4);
-
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(color: borderColor),
-      ),
+    return const MaterialApp(
+      title: _title,
+      home: CustomScrollingWidget(),
     );
+  }
+}
 
-    /// Optionally you can use form to validate the Pinput
-    return Form(
-      key: formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Directionality(
-            // Specify direction if desired
-            textDirection: TextDirection.ltr,
-            child: Pinput(
-              controller: pinController,
-              focusNode: focusNode,
-              androidSmsAutofillMethod:
-                  AndroidSmsAutofillMethod.smsUserConsentApi,
-              listenForMultipleSmsOnAndroid: true,
-              defaultPinTheme: defaultPinTheme,
-              separatorBuilder: (index) => const SizedBox(width: 8),
-              validator: (value) {
-                return value == '2222' ? null : 'Pin is incorrect';
+class CustomScrollingWidget extends StatefulWidget {
+  const CustomScrollingWidget({Key? key}) : super(key: key);
+
+  @override
+  State createState() => _CustomScrollingWidgetState();
+}
+
+class _CustomScrollingWidgetState extends State {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            pinned: true,
+            expandedHeight: 250.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('CustomScrollView',style: TextStyle(color: Colors.red),),
+              centerTitle: true,
+            ),
+          ),
+          SliverAppBar(
+            // pinned: true,
+            expandedHeight: 250.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('CustomScrollView',style: TextStyle(color: Colors.red),),
+              centerTitle: true,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              color: Colors.tealAccent,
+              alignment: Alignment.center,
+              height: 200,
+              child: const Text('This is Container'),
+            ),
+          ),
+          SliverGrid(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200.0,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 4.0,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.teal[100 * (index % 9)],
+                  child: Text('Grid Item $index'),
+                );
               },
-              // onClipboardFound: (value) {
-              //   debugPrint('onClipboardFound: $value');
-              //   pinController.setText(value);
-              // },
-              hapticFeedbackType: HapticFeedbackType.lightImpact,
-              onCompleted: (pin) {
-                debugPrint('onCompleted: $pin');
-              },
-              onChanged: (value) {
-                debugPrint('onChanged: $value');
-              },
-              cursor: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 9),
-                    width: 22,
-                    height: 1,
-                    color: focusedBorderColor,
-                  ),
-                ],
-              ),
-              focusedPinTheme: defaultPinTheme.copyWith(
-                decoration: defaultPinTheme.decoration!.copyWith(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: focusedBorderColor),
-                ),
-              ),
-              submittedPinTheme: defaultPinTheme.copyWith(
-                decoration: defaultPinTheme.decoration!.copyWith(
-                  color: fillColor,
-                  borderRadius: BorderRadius.circular(19),
-                  border: Border.all(color: focusedBorderColor),
-                ),
-              ),
-              errorPinTheme: defaultPinTheme.copyBorderWith(
-                border: Border.all(color: Colors.redAccent),
+              childCount: 20,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              color: Colors.amberAccent,
+              alignment: Alignment.center,
+              height: 200,
+              child: const Text('This is Container'),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 100.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                    width: 100.0,
+                    child: Card(
+                      color: Colors.cyan[100 * (index % 9)],
+                      child: Text('Item $index'),
+                    ),
+                  );
+                },
               ),
             ),
           ),
-          TextButton(
-            onPressed: () {
-              focusNode.unfocus();
-              formKey.currentState!.validate();
-            },
-            child: const Text('Validate'),
+          SliverFixedExtentList(
+            itemExtent: 50.0,
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.lightBlue[100 * (index % 9)],
+                  child: Text('List Item $index'),
+                );
+              },
+            ),
           ),
         ],
       ),

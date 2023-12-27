@@ -9,4 +9,6 @@ class AppColor {
   static Color hintColor = Color.fromRGBO(139, 139, 139, 1);
   static Color buttonBackColor = Color.fromRGBO(83, 83, 83, 1);
   static Color primary = Color.fromRGBO(28, 216, 204, 1);
+  static Color backgrounColor = Color.fromRGBO(0, 0, 0, 1);
 }
+

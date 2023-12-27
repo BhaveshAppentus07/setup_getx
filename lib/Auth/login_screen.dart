@@ -5,6 +5,7 @@ import 'package:getx_demo/Auth/otp_screen.dart';
 import 'package:getx_demo/Auth/signUp_screen.dart';
 import 'package:getx_demo/utils/app_them/app_colors.dart';
 import 'package:getx_demo/utils/style/style.dart';
+import 'package:getx_demo/utils/urls.dart';
 import 'package:getx_demo/widget/custom_button.dart';
 import 'package:getx_demo/widget/custom_text_field.dart';
 
@@ -20,7 +21,7 @@ class LoginScreen extends StatelessWidget {
           Image(
               width: MediaQuery.sizeOf(context).width,
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/signup_background.png')),
+              image: AssetImage(ImageUrl.signup_background)),
           Padding(
             padding: const EdgeInsets.all(17.0),
             child: Column(
@@ -92,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   height: 56,
                                   width: 56,
-                                  child: Center(child: Image(image: AssetImage('assets/images/google.png'))),
+                                  child: Center(child: Image(image: AssetImage(ImageUrl.google_icon))),
                                  ),
                                   Container(
                                   decoration: BoxDecoration(
@@ -101,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   height: 56,
                                   width: 56,
-                                  child: Center(child: Image(image: AssetImage('assets/images/apple.png'))),
+                                  child: Center(child: Image(image: AssetImage(ImageUrl.apple_icon))),
                                  )
                              ],
                            ),

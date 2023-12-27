@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/Navigation/navigation_screen.dart';
 import 'package:getx_demo/controller/pincode_controller.dart';
 import 'package:getx_demo/utils/app_them/app_colors.dart';
 import 'package:getx_demo/utils/style/style.dart';
+import 'package:getx_demo/utils/urls.dart';
 import 'package:getx_demo/widget/custom_button.dart';
 import 'package:pinput/pinput.dart';
 
@@ -21,7 +23,7 @@ class OTPScreen extends StatelessWidget {
           Image(
             width: MediaQuery.sizeOf(context).width,
             fit: BoxFit.fill,
-            image: AssetImage('assets/images/signup_background.png')),
+            image: AssetImage(ImageUrl.signup_background)),
           Padding(
             padding: const EdgeInsets.all(17.0),
             child: Column(
@@ -71,7 +73,7 @@ class OTPScreen extends StatelessWidget {
                              width: 250,
                           child: Text('Verify',style: AppStyle.fillbuttonStyle,), 
                           ontap: (){
-                        
+                        Get.to(NavigationScreen());
                           },
                           color: AppColor.primary,
                           ):

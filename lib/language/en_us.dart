@@ -26,7 +26,14 @@ class Language extends Translations {
           'forgot_password_message_2':'Enter your email address and you will receive a verification code to reset your password...',
           'reset_password':'Reset Password?',
           'reset_password_message_2':'You’ll be able to login with your new password once more...',
-          'reset_password_message_3':'Password must contain at least 8 characters, one capital letter, one number, and one special symbol'
+          'reset_password_message_3':'Password must contain at least 8 characters, one capital letter, one number, and one special symbol',
+          'johndeo_123':'johndeo_123',
+          'profile_message_2':'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ',
+          'Professional':'Professional',
+          'Social':'Social',
+          'profile_message_3':'Lorem ipsum dolor sit amet consectetur.',
+          'profile_message_4':'Lorem ipsum dolor sit amet consectetur. Mi quis id at amet. Malesuada fringilla sed magna aliquam libero malesuada leo.'
+
         },
         
       };

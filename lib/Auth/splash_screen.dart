@@ -5,6 +5,7 @@ import 'package:getx_demo/controller/checkbox_controller.dart';
 import 'package:getx_demo/pages/home_page.dart';
 import 'package:getx_demo/utils/app_them/app_colors.dart';
 import 'package:getx_demo/utils/style/style.dart';
+import 'package:getx_demo/utils/urls.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -28,7 +29,7 @@ class SplashScreen extends StatelessWidget {
                   width: 146,
                   child: Image(
                     fit: BoxFit.fill,
-                    image: AssetImage('assets/images/app_logo.png'))),
+                    image: AssetImage(ImageUrl.appLogo))),
                 SizedBox(height: 20,),
                 Text('Do_What_You_Love'.tr,style: AppStyle.Do_What_You_Love,),
                 SizedBox(height: 5,),

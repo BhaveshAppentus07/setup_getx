@@ -57,4 +57,9 @@ class AppStyle {
        static TextStyle forgot_password =  GoogleFonts.tenorSans(
       color:Color.fromRGBO(255, 255, 255, 1),
       fontSize: 13,);
+
+       static TextStyle userId =  TextStyle(
+      color:Color.fromRGBO(255, 255, 255, 1),
+       fontFamily: 'Satoshi',
+      fontSize: 18,);
 }
